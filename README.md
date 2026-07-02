@@ -90,7 +90,7 @@ DeviceNetworkEvents
 | where RemotePort in ("9001","9030","9050","9051","9150")
 | project Timestamp, DeviceName,ActionType, RemoteIP, RemotePort,InitiatingProcessAccountName,RemoteUrl, InitiatingProcessFileName
 ```
-<img width="1598" height="406" alt="Screenshot 2026-07-02 at 2 05 36 PM" src="https://github.com/user-attachments/assets/4c11ac77-38de-403e-83d4-d76eb10b80f3" />
+<img width="1601" height="394" alt="Screenshot 2026-07-02 at 2 06 31 PM" src="https://github.com/user-attachments/assets/39ec3769-4328-44ca-b950-4c36310eeb83" />
 
 ---
 
