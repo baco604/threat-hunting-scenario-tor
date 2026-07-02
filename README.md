@@ -84,15 +84,13 @@ Searched for any indication the TOR browser was used to establish a connection u
 **Query used to locate events:**
 
 ```kql
-DeviceNetworkEvents  
-| where DeviceName == "threat-hunt-lab"  
-| where InitiatingProcessAccountName != "system"  
-| where InitiatingProcessFileName in ("tor.exe", "firefox.exe")  
-| where RemotePort in ("9001", "9030", "9040", "9050", "9051", "9150", "80", "443")  
-| project Timestamp, DeviceName, InitiatingProcessAccountName, ActionType, RemoteIP, RemotePort, RemoteUrl, InitiatingProcessFileName, InitiatingProcessFolderPath  
-| order by Timestamp desc
+DeviceNetworkEvents
+| where DeviceName == "threat-hunt-lab"
+| where InitiatingProcessAccountName != "System"
+| where RemotePort in ("9001","9030","9050","9051","9150")
+| project Timestamp, DeviceName,ActionType, RemoteIP, RemotePort,InitiatingProcessAccountName,RemoteUrl, InitiatingProcessFileName
 ```
-<img width="1212" alt="image" src="https://github.com/user-attachments/assets/87a02b5b-7d12-4f53-9255-f5e750d0e3cb">
+<img width="1598" height="406" alt="Screenshot 2026-07-02 at 2 05 36 PM" src="https://github.com/user-attachments/assets/4c11ac77-38de-403e-83d4-d76eb10b80f3" />
 
 ---
 
