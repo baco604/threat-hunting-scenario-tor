@@ -56,7 +56,7 @@ DeviceProcessEvents
 | where ProcessCommandLine contains "tor-browser-windows-x86_64-portable-15.0.16.exe  /S"
 | project Timestamp, DeviceName, AccountName, ActionType, FileName, FolderPath, SHA256, ProcessCommandLine
 ```
-<img width="1212" alt="image" src="https://github.com/user-attachments/assets/b07ac4b4-9cb3-4834-8fac-9f5f29709d78">
+<img width="1615" height="342" alt="Screenshot 2026-07-02 at 1 59 07 PM" src="https://github.com/user-attachments/assets/2ecf5bbe-fef1-4462-be25-36917b305a0e" />
 
 ---
 
@@ -67,13 +67,13 @@ Searched for any indication that user "employee" actually opened the TOR browser
 **Query used to locate events:**
 
 ```kql
-DeviceProcessEvents  
-| where DeviceName == "threat-hunt-lab"  
-| where FileName has_any ("tor.exe", "firefox.exe", "tor-browser.exe")  
-| project Timestamp, DeviceName, AccountName, ActionType, FileName, FolderPath, SHA256, ProcessCommandLine  
+DeviceProcessEvents
+| where DeviceName == "threat-hunt-lab"
+| where FileName has_any ("tor.exe", "firefox.exe", "tor-browser.exe")
+| project Timestamp, DeviceName, AccountName, ActionType, FileName, FolderPath, SHA256, ProcessCommandLine
 | order by Timestamp desc
 ```
-<img width="1212" alt="image" src="https://github.com/user-attachments/assets/b13707ae-8c2d-4081-a381-2b521d3a0d8f">
+<img width="1589" height="725" alt="Screenshot 2026-07-02 at 2 00 47 PM" src="https://github.com/user-attachments/assets/98bd7d91-0c30-49d3-ae1c-8f5d0453dca8" />
 
 ---
 
