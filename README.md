@@ -239,12 +239,14 @@ Last observed activity in the Tor Browser profile, marking the end of the observ
 
 ## Summary
 
-The user "employee" on the "threat-hunt-lab" device initiated and completed the installation of the TOR browser. They proceeded to launch the browser, establish connections within the TOR network, and created various files related to TOR on their desktop, including a file named `tor-shopping-list.txt`. This sequence of activities indicates that the user actively installed, configured, and used the TOR browser, likely for anonymous browsing purposes, with possible documentation in the form of the "shopping list" file.
+At 6:32:41 AM UTC on June 29, 2026, user bacman silently installed the Tor Browser portable application on threat-hunt-lab directly from the Downloads folder. The installer extracted its files, and by 6:33:08 AM the user had launched the browser. The bundled Tor client (tor.exe) started at 6:33:23 AM and, within a little over a minute, successfully established connections to three separate Tor relay nodes over port 9001, with the local Firefox process successfully connecting to the Tor SOCKS proxy at 6:34:45 AM — confirming the browser was live on the Tor network. The user then actively browsed, opening a total of 20 tabs between 6:33 AM and 6:42 AM. At 6:47:16 AM, a file named tor-shopping-list.txt was created and opened on the Desktop. Browser activity (form history and storage database writes) continued until 8:03:15 AM, marking the end of the session — approximately 90 minutes after the Tor Browser was first installed.
+Bottom line: This is a complete, successful lifecycle of Tor Browser install → launch → successful Tor network connection → active multi-tab browsing → creation of a locally-saved text file → extended usage, all performed by user bacman on threat-hunt-lab within a single continuous session on June 29, 2026.
+
 
 ---
 
 ## Response Taken
 
-TOR usage was confirmed on the endpoint `threat-hunt-lab` by the user `employee`. The device was isolated, and the user's direct manager was notified.
+TOR usage was confirmed on endpoint threat-hunt-lab. The device was isolated and the user's direct manager was notified.
 
 ---
