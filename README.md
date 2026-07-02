@@ -98,50 +98,142 @@ DeviceNetworkEvents
 
 ## Chronological Event Timeline 
 
-### 1. File Download - TOR Installer
+6:32:41.191 AM — Process Created
+bacman executed the installer from the Downloads folder:
 
-- **Timestamp:** `2024-11-08T22:14:48.6065231Z`
-- **Event:** The user "employee" downloaded a file named `tor-browser-windows-x86_64-portable-14.0.1.exe` to the Downloads folder.
-- **Action:** File download detected.
-- **File Path:** `C:\Users\employee\Downloads\tor-browser-windows-x86_64-portable-14.0.1.exe`
+tor-browser-windows-x86_64-portable-15.0.16.exe  /S
 
-### 2. Process Execution - TOR Browser Installation
+The /S flag performs a silent installation — no setup wizard is shown to the user.
 
-- **Timestamp:** `2024-11-08T22:16:47.4484567Z`
-- **Event:** The user "employee" executed the file `tor-browser-windows-x86_64-portable-14.0.1.exe` in silent mode, initiating a background installation of the TOR Browser.
-- **Action:** Process creation detected.
-- **Command:** `tor-browser-windows-x86_64-portable-14.0.1.exe /S`
-- **File Path:** `C:\Users\employee\Downloads\tor-browser-windows-x86_64-portable-14.0.1.exe`
 
-### 3. Process Execution - TOR Browser Launch
+6:32:53.601 AM – 6:32:53.998 AM — File Created (installer extraction)
+Tor-Launcher.txt → ...\Tor Browser\Browser\TorBrowser\Docs\Licenses\
+Torbutton.txt → same folder
+tor.txt → same folder
+tor.exe → C:\Users\BACMAN\Desktop\Tor Browser\Browser\TorBrowser\Tor\tor.exe SHA256: 3480b027e2eeda0b6bfaf2f28bde7f3f7038ecf4de3c3862ee9536d1d8451537
 
-- **Timestamp:** `2024-11-08T22:17:21.6357935Z`
-- **Event:** User "employee" opened the TOR browser. Subsequent processes associated with TOR browser, such as `firefox.exe` and `tor.exe`, were also created, indicating that the browser launched successfully.
-- **Action:** Process creation of TOR browser-related executables detected.
-- **File Path:** `C:\Users\employee\Desktop\Tor Browser\Browser\TorBrowser\Tor\tor.exe`
 
-### 4. Network Connection - TOR Network
+6:32:59.305 AM — File Created
+Tor Browser.lnk shortcut created on the Desktop — installation complete; portable app extracted to C:\Users\BACMAN\Desktop\Tor Browser\.
 
-- **Timestamp:** `2024-11-08T22:18:01.1246358Z`
-- **Event:** A network connection to IP `176.198.159.33` on port `9001` by user "employee" was established using `tor.exe`, confirming TOR browser network activity.
-- **Action:** Connection success.
-- **Process:** `tor.exe`
-- **File Path:** `c:\users\employee\desktop\tor browser\browser\torbrowser\tor\tor.exe`
 
-### 5. Additional Network Connections - TOR Browser Activity
+6:33:08.791 AM — Process Created
+firefox.exe (Tor Browser's browser component) launched for the first time — Tor Browser opened.
 
-- **Timestamps:**
-  - `2024-11-08T22:18:08Z` - Connected to `194.164.169.85` on port `443`.
-  - `2024-11-08T22:18:16Z` - Local connection to `127.0.0.1` on port `9150`.
-- **Event:** Additional TOR network connections were established, indicating ongoing activity by user "employee" through the TOR browser.
-- **Action:** Multiple successful connections detected.
 
-### 6. File Creation - TOR Shopping List
+6:33:09.047 AM – 6:33:21.316 AM — Process Created (x7)
+Multiple firefox.exe child processes spawned (gpu, rdd, utility, and tab content processes 2–10) — normal multi-process browser startup sequence.
 
-- **Timestamp:** `2024-11-08T22:27:19.7259964Z`
-- **Event:** The user "employee" created a file named `tor-shopping-list.txt` on the desktop, potentially indicating a list or notes related to their TOR browser activities.
-- **Action:** File creation detected.
-- **File Path:** `C:\Users\employee\Desktop\tor-shopping-list.txt`
+
+6:33:17.855 AM — File Created
+storage.sqlite created in the Tor Browser default profile — browser profile initializing.
+6:33:20.611 AM — File Created
+storage-sync-v2.sqlite created in the Tor Browser default profile.
+
+
+6:33:23.735 AM — Process Created
+tor.exe executed with the following config:
+
+tor.exe -f torrc  DataDirectory ...\TorBrowser\Data\Tor  ControlPort 127.0.0.1:9151  SocksPort 127.0.0.1:9150
+
+The Tor client daemon starts, beginning negotiation with the Tor network.
+
+
+6:33:51.035 AM — Network: Connection Failed
+firefox.exe attempted to reach 127.0.0.1:9150 (local Tor SOCKS proxy) but failed — Tor circuit not yet established.
+
+
+6:34:17.424 AM – 6:34:19.015 AM — Network: Relay Connections (Batch 1 & 2)
+Time (UTC)
+Action
+Remote IP:Port
+Remote URL (TLS SNI)
+6:34:17.424 AM
+ConnectionSuccess
+94.100.6.30:9001
+—
+6:34:17.672 AM
+ConnectionAcknowledged
+94.100.6.30:9001
+—
+6:34:18.389 AM
+ConnectionSuccess
+167.86.67.112:9001
+—
+6:34:18.438 AM
+ConnectionAcknowledged
+167.86.67.112:9001
+—
+6:34:18.802 AM
+ConnectionSuccess
+94.100.6.30:9001
+wp7jddk7xskvtaj.com
+6:34:19.015 AM
+ConnectionSuccess
+167.86.67.112:9001
+42opsvojl572lpt.com
+
+
+These "RemoteUrl" values are TLS SNI hostnames used for Tor relay certificate obfuscation — not sites the user actually visited.
+
+
+6:34:40.236 AM – 6:34:40.690 AM — Network: Relay Connection (Batch 3)
+Time (UTC)
+Action
+Remote IP:Port
+Remote URL (TLS SNI)
+6:34:40.236 AM
+ConnectionSuccess
+173.212.200.241:9001
+—
+6:34:40.531 AM
+ConnectionAcknowledged
+173.212.200.241:9001
+—
+6:34:40.690 AM
+ConnectionSuccess
+173.212.200.241:9001
+yszyypq.com
+
+
+
+6:34:45.505 AM — Network: Connection Success ✅
+firefox.exe successfully connected to the local Tor SOCKS proxy at 127.0.0.1:9150.
+
+Tor circuit established — Tor Browser is now online and routing traffic through the Tor network.
+
+
+6:34:46.567 AM – 6:42:15.049 AM — Process Created (x10) — Active Browsing
+Sequential firefox.exe tab-content processes spawned for tabs 11 through 20:
+
+6:34:46 → 6:36:08 → 6:36:56 → 6:37:35 → 6:37:52 → 6:38:10 → 6:40:40 → 6:40:51 → 6:42:06 → 6:42:15
+
+Naturally spaced (1–3 minute intervals) — indicates active, ongoing human browsing across numerous tabs over ~8 minutes.
+
+
+6:47:16.003 AM — File Created 🔎
+tor-shopping-list.txt created directly on C:\Users\BACMAN\Desktop\ SHA256: 067d83642a45da492b3e51c4ad9c71ac223264ad8cdb00094af99447f3f57c07
+6:47:16.007 AM — File Created
+tor-shopping-list.lnk created in AppData\Roaming\Microsoft\Windows\Recent\ — a Windows "Recent Items" shortcut automatically generated when a file is opened/saved, confirming the shopping-list file was actively opened by the user.
+
+
+6:54:07.687 AM — File Created
+formhistory.sqlite created in the Tor Browser profile — form/autofill data began being recorded, consistent with the user typing into web forms/search fields during the session.
+
+
+8:03:14.970 AM – 8:03:15.105 AM — File Modified (session end)
+Time (UTC)
+File
+8:03:14.970 AM
+storage-sync-v2.sqlite
+8:03:15.037 AM
+formhistory.sqlite
+8:03:15.105 AM
+storage.sqlite
+
+
+Last observed activity in the Tor Browser profile, marking the end of the observed session (~1 hour 30 minutes after installation began).
+
 
 ---
 
