@@ -32,15 +32,14 @@ Searched for any file that had the string "tor" in it and discovered what looks 
 **Query used to locate events:**
 
 ```kql
-DeviceFileEvents  
-| where DeviceName == "threat-hunt-lab"  
-| where InitiatingProcessAccountName == "employee"  
-| where FileName contains "tor"  
-| where Timestamp >= datetime(2024-11-08T22:14:48.6065231Z)  
-| order by Timestamp desc  
+DeviceFileEvents
+| where DeviceName == "threat-hunt-lab"
+| where InitiatingProcessAccountName == "bacman"
+| where FileName contains "tor"
+| order by Timestamp desc
 | project Timestamp, DeviceName, ActionType, FileName, FolderPath, SHA256, Account = InitiatingProcessAccountName
 ```
-<img width="1212" alt="image" src="https://github.com/user-attachments/assets/71402e84-8767-44f8-908c-1805be31122d">
+<img width="1593" height="445" alt="Screenshot 2026-07-02 at 1 56 48 PM" src="https://github.com/user-attachments/assets/6cd9472f-07db-4cb4-9e1b-be7281b3a5ef" />
 
 ---
 
