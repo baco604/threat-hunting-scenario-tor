@@ -27,7 +27,9 @@ Management suspects that some employees may be using TOR browsers to bypass netw
 
 ### 1. Searched the `DeviceFileEvents` Table
 
-Searched for any file that had the string "tor" in it and discovered what looks like the user "employee" downloaded a TOR installer, did something that resulted in many TOR-related files being copied to the desktop, and the creation of a file called `tor-shopping-list.txt` on the desktop at `2024-11-08T22:27:19.7259964Z`. These events began at `2024-11-08T22:14:48.6065231Z`.
+Searched the DeviceFileEvents table for ANY file that had the string “tor” in it and discovered what looks like the user “bacman” downloaded a tor installer, did something that resulted in many tor related files being copied in the desktop and the creation of a file called “tor-shopping-list.txt” on the desktop
+
+These events began at: 6/29/2026, 6:27:15.009 AM
 
 **Query used to locate events:**
 
@@ -45,7 +47,9 @@ DeviceFileEvents
 
 ### 2. Searched the `DeviceProcessEvents` Table
 
-Searched for any `ProcessCommandLine` that contained the string "tor-browser-windows-x86_64-portable-14.0.1.exe". Based on the logs returned, at `2024-11-08T22:16:47.4484567Z`, an employee on the "threat-hunt-lab" device ran the file `tor-browser-windows-x86_64-portable-14.0.1.exe` from their Downloads folder, using a command that triggered a silent installation.
+Searched the DeviceProcessEvents table for any ProcessCommandLine that contained the string “tor-browser-windows-x86_64-portable-15.0.16.exe  /S.”
+
+On June 29, 2026, at 6:32:41 AM UTC, the user bacman started the Tor Browser installer on the computer threat-hunt-lab. The installer was launched from the user's Downloads folder using a silent installation option (/S), which installs the software without displaying the normal setup wizard.
 
 **Query used to locate event:**
 
@@ -62,9 +66,7 @@ DeviceProcessEvents
 
 ### 3. Searched the `DeviceProcessEvents` Table for TOR Browser Execution
 
-Searched for any indication that user "employee" actually opened the TOR browser. There was evidence that they did open it at `2024-11-08T22:17:21.6357935Z`. There were several other instances of `firefox.exe` (TOR) as well as `tor.exe` spawned afterwards.
-
-**Query used to locate events:**
+Searched the DeviceProcessEvents table for any indication that user “bacman” actually opened the tor browser. There was evidence that they did open it at 6/29/2026, 6:33:08.791 AM. There were several other instances of firefox.exe(Tor) as well as tor.exe spawned afterwards
 
 ```kql
 DeviceProcessEvents
@@ -79,7 +81,7 @@ DeviceProcessEvents
 
 ### 4. Searched the `DeviceNetworkEvents` Table for TOR Network Connections
 
-Searched for any indication the TOR browser was used to establish a connection using any of the known TOR ports. At `2024-11-08T22:18:01.1246358Z`, an employee on the "threat-hunt-lab" device successfully established a connection to the remote IP address `176.198.159.33` on port `9001`. The connection was initiated by the process `tor.exe`, located in the folder `c:\users\employee\desktop\tor browser\browser\torbrowser\tor\tor.exe`. There were a couple of other connections to sites over port `443`.
+Search the DeviceNetworkEvents table for any indication that tor browser was used to establish a connection using any of the known tor ports. On June 29, 2026, at 06:34:40 UTC, the user bacman successfully launched Tor Browser (tor.exe) on the threat-hunt-lab machine. The application established a successful outbound connection to the remote IP address 173.212.200.241 over TCP port 9001, which is commonly used by the Tor network to communicate with relay nodes. This activity indicates that the Tor client successfully connected to the Tor network. There were a few other connections over port 443.
 
 **Query used to locate events:**
 
