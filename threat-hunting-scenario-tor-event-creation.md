@@ -79,11 +79,6 @@ DeviceFileEvents
 - **Author Contact**: https://www.linkedin.com/in/bacongo/
 - **Date**: July 1st, 2026
 
-## Validated By:
-- **Reviewer Name**: 
-- **Reviewer Contact**: 
-- **Validation Date**: 
-
 ---
 
 ## Additional Notes:
